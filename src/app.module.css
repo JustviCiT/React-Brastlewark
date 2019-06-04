@@ -1,0 +1,86 @@
+.header{
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#43A047;
+    color: white;
+}
+
+.container{
+    width:100%;
+    height: 100%;
+    margin:auto;
+}
+
+.footer{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color:#43A047;
+    color: white;
+}
+
+
+@keyframes fadeInImg {
+    from{
+        opacity: 0
+    }
+    to{
+        opacity: 1
+    }  
+}
+
+.img-loading{
+   opacity: 0;
+   width: 100%;
+   height: auto;
+}
+
+.img-loaded{
+   animation: fadeInImg cubic-bezier(0.23, 1, 0.32, 1) 1;
+   position: relative;
+   opacity: 0;
+   animation-fill-mode: forwards;
+   animation-duration: 0.7s;
+   animation-delay: 0.1s;
+}
+
+.window{
+    
+}
+
+.closed{
+    display: none;
+}
+
+.Gnomes {
+    margin-top: 10px;
+    display: flex;    
+    flex-wrap: wrap;
+    justify-content: space-around;
+    grid-area: auto;
+    grid-gap: 3px;
+}
+
+.Gnomes img {
+    width: 100px;    
+    height: 100px;    
+    object-fit: cover;
+    cursor: pointer;
+}
+
+input {
+    width: 60%;
+    height: 30px;
+    text-align: center;
+    margin: auto;
+    margin-top: auto;
+    display: block;
+    margin-top: 5px;
+}
