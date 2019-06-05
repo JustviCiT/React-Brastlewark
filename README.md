@@ -4,8 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Libraries Used
 
-- react-lazy-load;   used to lazy load the thumbmail 
-
+- react-lazyload;       used to lazy load the thumbmail 
+- axios;                used for getting the data json and for testing http requests
+- enzyme                render components for testing purposes
 
 ## Available Scripts
 

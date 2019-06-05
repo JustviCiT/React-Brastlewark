@@ -2,35 +2,34 @@ import React, {Component} from 'react'
 import classes from '../app.module.css';
 import SearchBar from '../components/SearchBar'
 import Gnomes from '../components/Gnomes'
+import axios from 'axios';
 
 const TOWNAPI = "https://raw.githubusercontent.com/rrafols/mobile_test/master/data.json";
 
 class GnomeTownBuilder extends Component{
-    
     constructor(props){
         super(props);
         this.state ={
             townGnomes: [],
-            search: ""
+            search: "",
+            error: ""
         }
     }
 
     componentDidMount() {
-        fetch(TOWNAPI)
-          .then(response => {
-            if (response.ok) {
-              return response.json();
-            } else {
-              throw new Error('Something went wrong ...');
-            }
-          })
-          .then(data => {
-            data.Brastlewark.map(function(el) {
-                el.show = false;
+        axios.get(TOWNAPI)
+            .then(result => {
+                result.data.Brastlewark.map(function(el) {
+                    el.show = false;
+                });
+                return result.data;
             })
-
-                this.setState({ townGnomes: data.Brastlewark });
+            .then( data => {
+                this.setState({ townGnomes: data.Brastlewark }) 
             })
+            .catch(error => this.setState({
+                error:error,
+            }));
     }
 
     showDetails = (event, id) => {
@@ -75,7 +74,7 @@ class GnomeTownBuilder extends Component{
                 </div>
                 <div className={classes.container}>
                     <SearchBar value={this.state.search} onChange={this.updateSearch} />
-                    <Gnomes list={filteredGnomes} click={this.showDetails} />
+                    <Gnomes list={filteredGnomes} click={this.showDetails} /> 
                 </div>
                 <div className={classes.footer}>
                     <h6> See you ! </h6>
